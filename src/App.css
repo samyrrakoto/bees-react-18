@@ -103,6 +103,7 @@
 .isDead {
   color:gray !important;
   font-weight: bold;
+  text-decoration-line: line-through;
 }
 
 .bn30 {

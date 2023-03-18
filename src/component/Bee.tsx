@@ -6,9 +6,23 @@ type Props = {
 }
 
 export default function Bee({bee}: Props) {
+    function getBeeClass() {
+        let className = 'bee';
+        if (bee.isLastHit) {
+            className = className + ' lastHit';
+        } else if(bee.lp === 0) {
+            className = className + ' isDead';
+        } else {
+            className = className + ' ' + bee.role;
+        }
+
+        return className;
+    }
+
+
     return (
         <div 
-            className={`bee ${bee.role}`}
+            className={getBeeClass()}
         >
             <span> #{ bee.id }</span> -
             <span> {BEE_CREATION_DATA[bee.role].beemoji}</span>
