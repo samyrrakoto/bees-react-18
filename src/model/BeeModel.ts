@@ -1,6 +1,6 @@
-import BeeRoles from '../types/BeeRoles';
+import BeeRoles from '../type/BeeRoles';
 
-export default class Bee {
+export default class BeeModel {
     id: number;
     role: BeeRoles;
     lp: number;
