@@ -4,6 +4,7 @@ import Hive from './Hive';
 import HiveService from '../service/HiveService';
 import HiveRepository from '../service/HiveRepository';
 import HiveFactory from '../factory/HiveFactory';
+import ResetGame from './ResetGame';
 
 export default function Game(){
     const hiveState: string | null = HiveRepository.getHiveState();
@@ -12,6 +13,12 @@ export default function Game(){
             ? HiveFactory.deserializeToBeeModel(JSON.parse(String(HiveRepository.getHiveState())))
             : HiveService.createNewHive()
         );
+    const [gameOver, setGameOver] = useState(false);
     
-    return <Hive hive={hive} setHive={setHive}/>;
+    return (
+        <div className="container">
+            <ResetGame isGameOver={gameOver} setHive={setHive} setGameOver={setGameOver}/>
+            <Hive hive={hive} setHive={setHive} setGameOver={setGameOver} isGameOver={gameOver}/>
+        </div>
+    );
 }

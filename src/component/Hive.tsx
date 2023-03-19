@@ -8,12 +8,14 @@ import HitBee from "./HitBee";
 
 type Props = {
     hive: BeeModel[],
-    setHive: Dispatch<SetStateAction<BeeModel[]>>
+    setHive: Dispatch<SetStateAction<BeeModel[]>>,
+    setGameOver: Dispatch<SetStateAction<boolean>>,
+    isGameOver: boolean,
 }
 
-export default function Hive({hive, setHive}: Props) {
+export default function Hive({hive, setHive, setGameOver, isGameOver}: Props) {
     function hitRandomBee(){
-        HiveService.hitRandomBee();
+        setGameOver(HiveService.hitRandomBee());
         const updatedHive: BeeModel[] = HiveFactory.deserializeToBeeModel(JSON.parse(String(HiveRepository.getHiveState())));
         setHive(updatedHive);
     }
@@ -25,13 +27,16 @@ export default function Hive({hive, setHive}: Props) {
                 bee={bee}
             />
     );
-    
+
     return (
-        <div className="container">
+        <>
             <div>
                 {bees}
             </div>
-            <HitBee hitFunction={hitRandomBee}/>
-        </div>
+            {!isGameOver && 
+                <HitBee hitFunction={hitRandomBee}/>
+            }
+            
+        </>
     )
 }
