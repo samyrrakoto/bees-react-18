@@ -28,7 +28,7 @@ export default class HiveService {
 
     static hitRandomBee(): boolean {
         const hive: [] = JSON.parse(String( HiveRepository.getHiveState()));
-        const beeHive: BeeModel[] = HiveFactory.restoreBeeTypeArray(hive);
+        const beeHive: BeeModel[] = HiveFactory.deserializeToBeeModel(hive);
 
         const livesBeesIndexes: number[] = this.getLiveBeesIndexes(beeHive);
         const randomIndex: number = Math.floor(Math.random() * livesBeesIndexes.length);

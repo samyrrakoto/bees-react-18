@@ -6,10 +6,10 @@ import HiveRepository from '../service/HiveRepository';
 import HiveFactory from '../factory/HiveFactory';
 
 export default function Game(){
-    const beeState: string | null = HiveRepository.getHiveState();
+    const hiveState: string | null = HiveRepository.getHiveState();
     const [hive, setHive] = useState<BeeModel[]>(
-            beeState
-            ? HiveFactory.restoreBeeTypeArray(JSON.parse(String(HiveRepository.getHiveState())))
+            hiveState
+            ? HiveFactory.deserializeToBeeModel(JSON.parse(String(HiveRepository.getHiveState())))
             : HiveService.createNewHive()
         );
     

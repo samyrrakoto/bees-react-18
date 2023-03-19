@@ -20,7 +20,7 @@ export default class HiveFactory {
         return bees;
     }
 
-    static restoreBeeTypeArray(bees: BeeModel[]): BeeModel[] {
+    static deserializeToBeeModel(bees: BeeModel[]): BeeModel[] {
         const restoredBees : BeeModel[] = []
         bees.forEach(bee => {
                 const restoredBee = new BeeModel(bee.id, bee.role, bee.lp, bee.hp, bee.lossPerHit);

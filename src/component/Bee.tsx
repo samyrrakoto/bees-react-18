@@ -19,7 +19,6 @@ export default function Bee({bee}: Props) {
         return className;
     }
 
-
     return (
         <div 
             className={getBeeClass()}
