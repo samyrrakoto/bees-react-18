@@ -5,6 +5,7 @@ import HiveService from '../service/HiveService';
 import HiveRepository from '../service/HiveRepository';
 import HiveFactory from '../factory/HiveFactory';
 import ResetGame from './ResetGame';
+import GodSave from './GodSave';
 
 export default function Game(){
     const hiveState: string | null = HiveRepository.getHiveState();
@@ -16,9 +17,10 @@ export default function Game(){
     const [gameOver, setGameOver] = useState(false);
     
     return (
-        <div className="container">
-            <ResetGame isGameOver={gameOver} setHive={setHive} setGameOver={setGameOver}/>
+        <div className="container">            
+            <GodSave isGameOver={gameOver}/>
             <Hive hive={hive} setHive={setHive} setGameOver={setGameOver} isGameOver={gameOver}/>
+            <ResetGame setHive={setHive} setGameOver={setGameOver}/>
         </div>
     );
 }
