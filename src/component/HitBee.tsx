@@ -1,9 +1,11 @@
+import { ReactElement } from "react";
+
 type Props = {
     hitFunction: Function
 }
 
-export default function HitBee({hitFunction}: Props){
-    function hitRandomBee(){
+export default function HitBee({ hitFunction }: Props): ReactElement {
+    function hitRandomBee(): void {
         hitFunction();
     }
 

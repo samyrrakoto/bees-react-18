@@ -1,12 +1,13 @@
 import BeeModel from "../model/BeeModel";
 import BEE_CREATION_DATA from "../data/BeeCreationData";
+import { ReactElement } from "react";
 
 type Props = {
     bee: BeeModel
 }
 
-export default function Bee({bee}: Props) {
-    function getBeeClass() {
+export default function Bee({bee}: Props): ReactElement {
+    function getBeeClass(): string {
         let className = 'bee';
         if (bee.isLastHit) {
             className = className + ' lastHit';

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import BeeModel from '../model/BeeModel';
 import Hive from './Hive';
 import HiveService from '../service/HiveService';
@@ -7,7 +7,7 @@ import HiveFactory from '../factory/HiveFactory';
 import ResetGame from './ResetGame';
 import GodSave from './GodSave';
 
-export default function Game(){
+export default function Game(): ReactElement {
     const hiveState: string | null = HiveRepository.getHiveState();
     const [hive, setHive] = useState<BeeModel[]>(
             hiveState

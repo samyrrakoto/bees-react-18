@@ -21,14 +21,14 @@ export default class HiveFactory {
     }
 
     static deserializeToBeeModel(bees: BeeModel[]): BeeModel[] {
-        const restoredBees : BeeModel[] = []
+        const deserializedBees : BeeModel[] = []
         bees.forEach(bee => {
-                const restoredBee = new BeeModel(bee.id, bee.role, bee.lp, bee.hp, bee.lossPerHit);
-                restoredBee.isLastHit = bee.isLastHit;
-                restoredBees.push(restoredBee);
+                const deserializedBee = new BeeModel(bee.id, bee.role, bee.lp, bee.hp, bee.lossPerHit);
+                deserializedBee.isLastHit = bee.isLastHit;
+                deserializedBees.push(deserializedBee);
             }
         )
 
-        return restoredBees;
+        return deserializedBees;
     }
 }

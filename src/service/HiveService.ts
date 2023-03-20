@@ -11,7 +11,7 @@ export default class HiveService {
         return hive;
     }
 
-    static shuffleHive(hive: BeeModel[]) {
+    static shuffleHive(hive: BeeModel[]): BeeModel[] {
         for (let i: number = hive.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
             const temp: BeeModel = hive[i];

@@ -16,7 +16,7 @@ export default class BeeModel {
         this.lossPerHit = lossPerHit;
     }
 
-    getHit(): void{
+    getHit(): void {
         this.lp-= this.lossPerHit;
     }
 }
