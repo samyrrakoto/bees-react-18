@@ -1,46 +1,50 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+﻿Technical test : Bees
+====================
+This is a technical test I had to pass to get in a company once. I originally had to do it in PHP (and passed 🎉), you can find it [here](https://github.com/samyrrakoto/bees-php-sf6), and I decided to re-do it in Vue 3 to consolidate my learning of this framework, that you can view [here](https://github.com/samyrrakoto/bees-vue3), and this time I decided to re-re-do it in React 18 to learn it.
 
-## Available Scripts
+Below are the test specifications
 
-In the project directory, you can run:
+## Goal
+This test aims at creating a PHP application that performs the following:
+	- produce a web page with an interface to play the game (UI design is not expected or necessary)
+	- a button should appear in order to "hit" a random bee 
+	- the game must follow the rules described below 
 
-### `npm start`
+N.B: The solution should run locally (please provide a README.md). You don’t need to setup any web server or host your code online
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Specifications
 
-### `npm test`
+There are 3 different types of bees:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- The Queen
+	- has 100 hit points
+	- when the Queen is hit, then 15 hit points should be deduced from her lifespan
+	- when the Queen is running out of hit points, all the other bees should automatically be out of hit points
+	- there is only 1 Queen in the game
 
-### `npm run build`
+- The Worker
+	- each has 50 hit points
+	- when a worker is hit, he loses 20 hit points
+	- there are 5 Workers at start 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- The Scout
+	- each has 30 hit points
+	- when a scout is hit, he loses 15 hit points
+	- there are 8 Scouts at start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Gameplay 
 
-### `npm run eject`
+- Should be visible on the UI:
+	- the list of bees associated with their role (Queen, Worker, Scout) and remaining hit points
+	- a clickable "hit" button
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- When the button is clicked:
+	- a random bee should be selected 
+	- the correct damages should be deduced from its lifespan
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Please note that:
+	- if a bee is running out of hit points, then it cannot be randomly selected again
+	- when all bees are running out of hit points, then the game must be able to reset itself for another round
