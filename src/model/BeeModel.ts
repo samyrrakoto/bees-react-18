@@ -19,8 +19,4 @@ export default class BeeModel {
     getHit(): void{
         this.lp-= this.lossPerHit;
     }
-
-    toggleLastHit(): void {
-        this.isLastHit = !this.isLastHit;
-    }
 }

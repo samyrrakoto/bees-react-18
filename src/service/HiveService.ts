@@ -31,7 +31,7 @@ export default class HiveService {
         const randomBee: BeeModel = beeHive[livesBeesIndexes[randomIndex]];
 
         randomBee.getHit();
-        randomBee.toggleLastHit();
+        randomBee.isLastHit = true;
         randomBee.lp = randomBee.lp <= 0 ? 0 : randomBee.lp;
         this.toggleLastHits(randomBee, beeHive);
 
@@ -60,7 +60,7 @@ export default class HiveService {
             {
                 continue;
             }
-            beeHive[i].toggleLastHit();
+            beeHive[i].isLastHit = false;
         }
     }
 }
