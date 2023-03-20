@@ -22,10 +22,6 @@ export default class HiveService {
         return hive;
     }
 
-    static getLiveBees(hive: BeeModel[]): BeeModel[] {
-        return hive.filter(bee => bee.lp > 0);
-    }
-
     static hitRandomBee(): boolean {
         const hive: [] = JSON.parse(String( HiveRepository.getHiveState()));
         const beeHive: BeeModel[] = HiveFactory.deserializeToBeeModel(hive);
@@ -35,14 +31,13 @@ export default class HiveService {
         const randomBee: BeeModel = beeHive[livesBeesIndexes[randomIndex]];
 
         randomBee.getHit();
-        randomBee.setAsLastHit();
+        randomBee.toggleLastHit();
         randomBee.lp = randomBee.lp <= 0 ? 0 : randomBee.lp;
-        this.setAllOtherBeesNonLastHit(randomBee, beeHive);
+        this.toggleLastHits(randomBee, beeHive);
 
         HiveRepository.updateHiveState(beeHive);
-        const isQueenDead: boolean = this.checkQueenIsDead(randomBee);
 
-        return isQueenDead;
+        return randomBee.role === "queen" && randomBee.lp === 0;
     }
 
     static getLiveBeesIndexes(bees: BeeModel[]): number[] {
@@ -58,23 +53,14 @@ export default class HiveService {
         return livesBeesIndexes;
     }
 
-    static checkQueenIsDead(bee: BeeModel): boolean {
-        if (bee.role === "queen") {
-            if (bee.lp === 0) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    static setAllOtherBeesNonLastHit(randomBee: BeeModel, beeHive: BeeModel[]): void {
+    static toggleLastHits(randomBee: BeeModel, beeHive: BeeModel[]): void {
         for (let i = 0; i < beeHive.length; i++)
         {
             if (randomBee === beeHive[i])
             {
                 continue;
             }
-            beeHive[i].isLastHit = false;
+            beeHive[i].toggleLastHit();
         }
     }
 }
